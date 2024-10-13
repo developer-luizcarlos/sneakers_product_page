@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { kumbh } from "./_lib/fonts";
 import ContextComponent from "@/components/ContextComponent/ContextComponent";
 import Header from "@/components/Header/Header";
 
@@ -16,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`antialiased`}
+        className={` ${ kumbh.className } antialiased`}
       >
         <Header />
         <ContextComponent>
