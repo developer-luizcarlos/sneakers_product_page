@@ -10,6 +10,7 @@ import Container from "../Container/Container";
 import { ThemeContext } from "../ContextComponent/ContextComponent";
 import CartItem from "./CartItem";
 import { CartContext } from "./CartItem";
+import Cart from "../Cart/Cart";
 
 type Props = {
   itemsCart?: number;
@@ -18,6 +19,7 @@ type Props = {
 export default function Header({ itemsCart }: Props) {
   const pathname = usePathname();
   const { productsQuantity } = useContext(CartContext);
+  const [cartVisibility,setCartVisibility] = useState<boolean>(false);
 
   return (
     <CartItem>
@@ -65,12 +67,21 @@ export default function Header({ itemsCart }: Props) {
                     "capitalize relative font-medium text-darkGrayishBlue after:w-0 after:h-1 after:absolute after:-bottom-full after:left-0 after:bg-paleOrange  hover:ease-in-out hover:after:w-full after:duration-300 "}>contact</Link>
               </nav>
             </div>
-            <div className="flex items-center justify-center gap-3">
-              <div className="relative cursor-pointer">
-                <IoCartOutline className="w-11 h-8" />
-                <div className={productsQuantity > 0 ? "absolute top-[-10px] right-[-14px] h-4 w-9 bg-paleOrange flex items-center justify-center rounded-lg text-white text-xs" : "hidden"}>
-                  {productsQuantity}
+            <div className="flex items-center justify-center gap-8">
+              <div className="relative">
+                <div className="relative cursor-pointer">
+                  <button
+                    onClick={() =>
+                      setCartVisibility((previousValue: boolean) => { return !previousValue; })}
+                  >
+                    <IoCartOutline className="w-11 h-8" />
+                  </button>
+                  <div className={productsQuantity > 0 ? "absolute top-[-10px] right-[-14px] h-4 w-9 bg-paleOrange flex items-center justify-center rounded-lg text-white text-xs" : "hidden"}>
+                    {productsQuantity}
+                  </div>
                 </div>
+
+                <Cart visibility={cartVisibility} />
               </div>
               <div className="w-14 h-14 rounded-full hover:border-paleOrange border-2 duration-500 cursor-pointer">
                 <img src="/images/image-avatar.png" alt="avatar photo" className="w-full h-full object-cover" />
