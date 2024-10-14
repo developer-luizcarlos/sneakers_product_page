@@ -38,7 +38,36 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <article></article>
+        <article className="w-full flex flex-col gap-9">
+          <div className="flex flex-col gap-3">
+            <h3 className="uppercase text-darkGrayishBlue font-bold text-sm">sneaker company</h3>
+            <h1 className="uppercase text-veryDarkBlue text-4xl font-bold">fall limited edition<br />sneakers</h1>
+          </div>
+          <div className="flex flex-col gap-5">
+            <p className="text-base text-darkGrayishBlue font-medium leading-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit porro, fugiat doloremque dolorum est doloribus incidunt alias repellendus. Minima explicabo quo quam saepe vero voluptas consequuntur assumenda, ratione voluptatem fuga.</p>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-4">
+                <span className="text-4xl font-bold">$125.00</span>
+                <span className="w-16 p-1 flex items-center justify-center rounded-md bg-black text-white font-medium">50%</span>
+              </div>
+              <small className="text-darkGrayishBlue line-through font-bold text-base">$250.00</small>
+            </div>
+          </div>
+          <div className="w-full flex items-center  gap-3">
+            <div className="w-40 h-12 flex items-center justify-between rounded-md bg-lightGrayishBlue">
+              <button className="w-10 h-full p-1 flex items-center justify-center cursor-pointer">
+                <img src="./images/icon-minus.svg" alt="minus icon" />
+              </button>
+              <span className="w-full h-full flex items-center justify-center font-semibold text-base">
+                0
+              </span>
+              <button className="w-10 h-full p-1 flex items-center justify-center cursor-pointer">
+                <img src="./images/icon-plus.svg" alt="plus icon" />
+              </button>
+            </div>
+            <button className="w-64 h-12 rounded-lg p-1 flex items-center justify-center gap-2 bg-paleOrange font-bold text-black cursor-pointer">Add to cart</button>
+          </div>
+        </article>
       </section>
     </main>
   );
