@@ -45,19 +45,19 @@ export default function Home() {
 
   return (
     <main className="w-full">
-      <section className="w-full grid grid-cols-2 place-content-start gap-0 py-7">
+      <section className="w-full grid grid-cols-2 place-items-center gap-0 py-7">
         <div className="h-full w-full flex flex-col items-start gap-y-4">
           <img
             src={images[imagesIndex].src}
             alt="product photo"
-            className="w-[400px] h-[420px] object-cover rounded-lg"
+            className="w-[450px] h-[420px] object-cover rounded-lg"
           />
-          <div className="w-[400px] flex items-center gap-4">
+          <div className="w-[450px] flex items-center justify-between gap-4">
             {images.map((image,index) => (
               <div
                 key={index}
                 onClick={() => setImageSlider(index)}
-                className={imagesIndex === index ? "w-24 h-24 rounded-md border-2 border-paleOrange cursor-pointer" : "w-24 h-24 rounded-md cursor-pointer"}
+                className={imagesIndex === index ? "w-24 h-24 rounded-md overflow-hidden border-2 border-paleOrange cursor-pointer" : "w-24 h-24 rounded-md cursor-pointer"}
               >
                 <img
                   src={image.src}
