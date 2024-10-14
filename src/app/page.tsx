@@ -3,8 +3,34 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { images } from "./(gallery)/gallery";
-import { useState,useCallback,useContext } from "react";
+import React,{ useState,useCallback,useContext,useReducer } from "react";
 import { CartContext } from "@/components/Header/CartItem";
+
+type Action = { type: "increment"; } | { type: "decrement"; };
+
+type State = {
+  quantitySelected: number;
+};
+
+let initialState: State = { quantitySelected: 0 };
+
+const reducer = (state: State,action: Action): State => {
+  switch(action.type) {
+    case "increment":
+      return {
+        quantitySelected: state.quantitySelected + 1,
+      };
+    case "decrement":
+      if(state.quantitySelected > 0) {
+        return {
+          quantitySelected: state.quantitySelected - 1,
+        };
+      }
+    default:
+      return state;
+  }
+};
+
 
 export default function Home() {
   const [imagesIndex,setImagesIndex] = useState<number>(0);
@@ -14,6 +40,8 @@ export default function Home() {
   },[]);
 
   const { changeProductsQuantity } = useContext(CartContext);
+
+  const [state,dispatch] = useReducer(reducer,initialState);
 
   return (
     <main className="w-full">
@@ -58,18 +86,28 @@ export default function Home() {
           </div>
           <div className="w-full flex items-center  gap-3">
             <div className="w-40 h-12 flex items-center justify-between rounded-md bg-lightGrayishBlue">
-              <button className="w-10 h-full p-1 flex items-center justify-center cursor-pointer">
+              <button
+                onClick={() => {
+                  dispatch({ type: "decrement" });
+                }}
+                className="w-10 h-full p-1 flex items-center justify-center cursor-pointer">
                 <img src="./images/icon-minus.svg" alt="minus icon" />
               </button>
               <span className="w-full h-full flex items-center justify-center font-semibold text-base">
-                0
+                {state.quantitySelected}
               </span>
-              <button className="w-10 h-full p-1 flex items-center justify-center cursor-pointer">
+              <button
+                onClick={() => {
+                  dispatch({ type: "increment" });
+                }}
+                className="w-10 h-full p-1 flex items-center justify-center cursor-pointer">
                 <img src="./images/icon-plus.svg" alt="plus icon" />
               </button>
             </div>
             <button
-              onClick={() => changeProductsQuantity(10)}
+              onClick={() => {
+                changeProductsQuantity(state.quantitySelected);
+              }}
               className="w-64 h-12 rounded-lg p-1 flex items-center justify-center gap-2 bg-paleOrange font-bold text-black cursor-pointer">Add to cart</button>
           </div>
         </article>
