@@ -3,7 +3,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { images } from "./(gallery)/gallery";
-import { useState,useCallback } from "react";
+import { useState,useCallback,useContext } from "react";
+import { CartContext } from "@/components/Header/CartItem";
 
 export default function Home() {
   const [imagesIndex,setImagesIndex] = useState<number>(0);
@@ -11,6 +12,8 @@ export default function Home() {
   const setImageSlider = useCallback((index: number) => {
     setImagesIndex(index);
   },[]);
+
+  const { changeProductsQuantity } = useContext(CartContext);
 
   return (
     <main className="w-full">
@@ -65,7 +68,9 @@ export default function Home() {
                 <img src="./images/icon-plus.svg" alt="plus icon" />
               </button>
             </div>
-            <button className="w-64 h-12 rounded-lg p-1 flex items-center justify-center gap-2 bg-paleOrange font-bold text-black cursor-pointer">Add to cart</button>
+            <button
+              onClick={() => changeProductsQuantity(10)}
+              className="w-64 h-12 rounded-lg p-1 flex items-center justify-center gap-2 bg-paleOrange font-bold text-black cursor-pointer">Add to cart</button>
           </div>
         </article>
       </section>

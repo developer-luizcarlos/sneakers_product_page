@@ -1,7 +1,7 @@
 /*
   Este código cria um contexto que atribui valor ao ícone anexo ao item do carrinho de compras permite manipular o seu valor  a partir de um outro componente ainda a ser criado;
 */
-
+"use client";
 import React,{ useState,createContext } from "react";
 
 type Props = {

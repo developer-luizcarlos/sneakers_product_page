@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Metadata } from "next";
 import "./globals.css";
 import Container from "@/components/Container/Container";
 import { kumbh } from "./_lib/fonts";
 // import ContextComponent from "@/components/ContextComponent/ContextComponent";
 import Header from "@/components/Header/Header";
+import CartItem from "@/components/Header/CartItem";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,10 +22,12 @@ export default function RootLayout({
       <body
         className={` ${ kumbh.className } antialiased`}
       >
-        <Header />
-        <Container>
-          {children}
-        </Container>
+        <CartItem>
+          <Header />
+          <Container>
+            {children}
+          </Container>
+        </CartItem>
       </body>
     </html>
   );

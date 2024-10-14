@@ -10,6 +10,7 @@ type Props = {
 
 export default function Cart({ visibility }: Props) {
   const { productsQuantity } = useContext(CartContext);
+  console.log("cart " + productsQuantity);
 
   if(!visibility) return null;
 
