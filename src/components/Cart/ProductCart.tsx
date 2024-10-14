@@ -4,7 +4,7 @@ import { CartContext } from "../Header/CartItem";
 import { useContext } from "react";
 
 export default function ProductCart() {
-  const { productsQuantity } = useContext(CartContext);
+  const { productsQuantity,changeProductsQuantity } = useContext(CartContext);
 
   return (
     <div>
@@ -20,8 +20,8 @@ export default function ProductCart() {
             {productsQuantity} {(125 * productsQuantity).toLocaleString("pt-br",{ style: "currency",currency: "USD" })}
           </span></small>
         </div>
-        <button >
-          <img src="./images/icon-delete.svg" alt="" />
+        <button onClick={() => { changeProductsQuantity(0); }}>
+          <img src="./images/icon-delete.svg" alt="clean your cart" />
         </button>
       </div>
       <button className="w-full bg-paleOrange py-3 rounded-md font-bold text-base cursor-pointer">Checkout</button>
