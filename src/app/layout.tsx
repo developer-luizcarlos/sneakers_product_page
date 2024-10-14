@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Container from "@/components/Container/Container";
 import { kumbh } from "./_lib/fonts";
-import ContextComponent from "@/components/ContextComponent/ContextComponent";
+// import ContextComponent from "@/components/ContextComponent/ContextComponent";
 import Header from "@/components/Header/Header";
 
 export const metadata: Metadata = {
@@ -20,9 +21,9 @@ export default function RootLayout({
         className={` ${ kumbh.className } antialiased`}
       >
         <Header />
-        <ContextComponent>
+        <Container>
           {children}
-        </ContextComponent>
+        </Container>
       </body>
     </html>
   );
