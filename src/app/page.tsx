@@ -5,6 +5,8 @@
 import { images } from "./(gallery)/gallery";
 import React,{ useState,useCallback,useContext,useReducer } from "react";
 import { CartContext } from "@/components/Header/CartItem";
+import ModalSlider from "@/components/ModalSlider/ModalSlider";
+import Container from "@/components/Container/Container";
 
 type Action = { type: "increment"; } | { type: "decrement"; };
 
@@ -34,6 +36,7 @@ const reducer = (state: State,action: Action): State => {
 
 export default function Home() {
   const [imagesIndex,setImagesIndex] = useState<number>(0);
+  const [showModalSlider,setShowModalSlider] = useState<boolean>(false);
 
   const setImageSlider = useCallback((index: number) => {
     setImagesIndex(index);
@@ -45,11 +48,13 @@ export default function Home() {
 
   return (
     <main className="w-full">
+      <ModalSlider visibility={showModalSlider} eventHandler={() => setShowModalSlider(false)} />
       <section className="w-full grid grid-cols-2 place-items-center gap-0 py-7">
         <div className="h-full w-full flex flex-col items-start gap-y-4">
           <img
             src={images[imagesIndex].src}
             alt="product photo"
+            onClick={() => { setShowModalSlider(true); }}
             className="w-[450px] h-[420px] object-cover rounded-lg"
           />
           <div className="w-[450px] flex items-center justify-between gap-4">
