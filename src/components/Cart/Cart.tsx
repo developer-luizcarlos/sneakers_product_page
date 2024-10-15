@@ -10,13 +10,12 @@ type Props = {
 
 export default function Cart({ visibility }: Props) {
   const { productsQuantity } = useContext(CartContext);
-  console.log("cart " + productsQuantity);
 
   if(!visibility) return null;
 
   return (
     <article
-      className={productsQuantity === 0 ? "w-[380px] absolute -left-[390%] -bottom-[520%] shadow-grayishBlue shadow-xl rounded-md bg-white" : "w-[380px] absolute -left-[390%] -bottom-[690%] shadow-grayishBlue shadow-xl rounded-md bg-white"}>
+      className={productsQuantity === 0 ? "w-[345px] lg:w-[380px] absolute -left-[490%] lg:-left-[390%] -bottom-[620%] lg:-bottom-[520%] shadow-grayishBlue shadow-xl rounded-md bg-white" : "w-[345px] lg:w-[380px] absolute  -left-[490%] -bottom-[720%] lg:-left-[390%] lg:-bottom-[690%] shadow-grayishBlue shadow-xl rounded-md bg-white"}>
       <div className="block w-full text-left p-4 border-b-2 border-gray-100">
         <h2 className="font-bold capitalize text-veryDarkBlue text-lg">Cart</h2>
       </div>

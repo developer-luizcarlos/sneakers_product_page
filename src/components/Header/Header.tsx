@@ -24,7 +24,7 @@ export default function Header({ itemsCart }: Props) {
   return (
     <header className="w-full">
       <Container>
-        <div className="w-full h-full my-3 flex items-center justify-between border-b-2 border-b-lightGrayishBlue">
+        <div className="w-full h-full px-4 my-3 flex items-center justify-between border-b-2 border-b-lightGrayishBlue">
           <div className="flex items-center justify-center gap-6">
             <button role="menu" className="md:hidden">
               <Image
@@ -43,7 +43,7 @@ export default function Header({ itemsCart }: Props) {
                 className="hover:drop-shadow-lg hover:shadow-slate-900"
               />
             </Link>
-            <nav className="flex items-center justify-center gap-5 h-16 ">
+            <nav className="hidden md:flex items-center justify-center gap-5 h-16 ">
               <Link href="/collection"
                 className={pathname === "/collection" ? "capitalize relative font-medium text-paleOrange after:w-0 after:h-1 after:absolute after:-bottom-full after:left-0 after:bg-paleOrange  hover:ease-in-out hover:after:w-full after:duration-300 "
                   :
