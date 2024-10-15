@@ -24,7 +24,7 @@ export default function Header({ itemsCart }: Props) {
   return (
     <header className="w-full">
       <Container>
-        <div className="w-full h-full px-4 my-3 flex items-center justify-between border-b-2 border-b-lightGrayishBlue">
+        <div className="w-full h-full px-9 lg:px-0 my-3 flex items-center justify-between border-b-2 border-b-lightGrayishBlue">
           <div className="flex items-center justify-center gap-6">
             <button role="menu" className="md:hidden">
               <Image

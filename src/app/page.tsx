@@ -6,7 +6,7 @@ import { images } from "./(gallery)/gallery";
 import React,{ useState,useCallback,useContext,useReducer } from "react";
 import { CartContext } from "@/components/Header/CartItem";
 import ModalSlider from "@/components/ModalSlider/ModalSlider";
-import Container from "@/components/Container/Container";
+import MobileSlider from "@/components/MobileSlider/MobileSlider";
 
 type Action = { type: "increment"; } | { type: "decrement"; };
 
@@ -49,8 +49,9 @@ export default function Home() {
   return (
     <main className="w-full">
       <ModalSlider visibility={showModalSlider} eventHandler={() => setShowModalSlider(false)} />
-      <section className="w-full grid grid-cols-1 px-4 md:grid-cols-2 place-items-center gap-0 py-7">
-        <div className="h-full w-full hidden md:flex flex-col items-start gap-y-4">
+      <section className="w-full grid grid-cols-1 lg:grid-cols-2 place-items-center gap-0 py-0 lg:py-7">
+        <MobileSlider visibility={true} />
+        <div className="h-full w-full hidden lg:flex flex-col items-start gap-y-4">
           <img
             src={images[imagesIndex].src}
             alt="product photo"
@@ -74,7 +75,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <article className="w-full flex flex-col gap-9">
+        <article className="w-full p-9 lg:p-0 flex flex-col gap-9">
           <div className="flex flex-col gap-3">
             <h3 className="uppercase text-darkGrayishBlue font-bold text-sm">sneaker company</h3>
             <h1 className="uppercase text-veryDarkBlue text-4xl font-bold">fall limited edition<br />sneakers</h1>
