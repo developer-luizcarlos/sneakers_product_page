@@ -15,7 +15,7 @@ export default function Cart({ visibility }: Props) {
 
   return (
     <article
-      className={productsQuantity === 0 ? "w-[345px] lg:w-[380px] z-50 absolute -left-[490%] lg:-left-[390%] -bottom-[620%] lg:-bottom-[520%] shadow-grayishBlue shadow-xl rounded-md bg-white" : "w-[345px] lg:w-[380px] absolute  -left-[490%] -bottom-[720%] lg:-left-[390%] lg:-bottom-[690%] shadow-grayishBlue shadow-xl rounded-md bg-white"}>
+      className={productsQuantity === 0 ? "w-[345px] lg:w-[380px] z-50 absolute left-20 md:left-2/3 top-24  shadow-grayishBlue shadow-xl rounded-md bg-white" : "w-[345px] z-50 lg:w-[380px] absolute left-20 top-24 md:left-2/3 shadow-grayishBlue shadow-xl rounded-md bg-white"}>
       <div className="block w-full text-left p-4 border-b-2 border-gray-100">
         <h2 className="font-bold capitalize text-veryDarkBlue text-lg">Cart</h2>
       </div>

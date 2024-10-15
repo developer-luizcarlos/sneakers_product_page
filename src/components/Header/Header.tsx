@@ -23,8 +23,9 @@ export default function Header({ itemsCart }: Props) {
 
   return (
     <header className="w-full">
+      <Cart visibility={cartVisibility} />
       <Container>
-        <div className="w-full h-full px-9 lg:px-0 my-3 flex items-center justify-between border-b-2 border-b-lightGrayishBlue">
+        <div className="w-full h-full px-9 lg:px-0 my-3 flex items-center justify-between border-b-2 border-b-lightGrayishBlue relative">
           <div className="flex items-center justify-center gap-6">
             <button role="menu" className="md:hidden">
               <Image
@@ -80,7 +81,7 @@ export default function Header({ itemsCart }: Props) {
                 </div>
               </div>
 
-              <Cart visibility={cartVisibility} />
+
             </div>
             <div className="w-14 h-14 rounded-full hover:border-paleOrange border-2 duration-500 cursor-pointer">
               <img src="/images/image-avatar.png" alt="avatar photo" className="w-full h-full object-cover" />
