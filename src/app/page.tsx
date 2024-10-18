@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { images } from "./(gallery)/gallery";
+import { thumbnails } from "./(thumbnail)/thumbnail";
 import React,{ useState,useCallback,useContext,useReducer } from "react";
 import { CartContext } from "@/components/Header/CartItem";
 import ModalSlider from "@/components/ModalSlider/ModalSlider";
@@ -51,15 +52,15 @@ export default function Home() {
       <ModalSlider visibility={showModalSlider} eventHandler={() => setShowModalSlider(false)} />
       <section className="w-full grid grid-cols-1 lg:grid-cols-2 place-items-center gap-0 py-0 lg:py-7">
         <MobileSlider visibility={true} />
-        <div className="h-full w-full hidden lg:flex flex-col items-start gap-y-4">
+        <div className="h-full w-[400px] max-w-full hidden lg:flex flex-col items-start gap-y-4">
           <img
             src={images[imagesIndex].src}
             alt="product photo"
             onClick={() => { setShowModalSlider(true); }}
-            className="w-[450px] h-[420px] object-cover rounded-lg"
+            className="w-full h-[420px] object-cover rounded-lg"
           />
-          <div className="w-[450px] flex items-center justify-between gap-4">
-            {images.map((image,index) => (
+          <div className="w-full flex items-center justify-between gap-4">
+            {thumbnails.map((image,index) => (
               <div
                 key={index}
                 onClick={() => setImageSlider(index)}
@@ -69,7 +70,7 @@ export default function Home() {
                   src={image.src}
                   alt={`foto do produto miniatura ${ index }`}
                   draggable="false"
-                  className={imagesIndex === index ? "w-full h-full object-cover grayscale" : "w-full h-full object-cover rounded-md"}
+                  className={imagesIndex === index ? "w-full h-full object-cover brightness-75" : "w-full h-full object-cover rounded-md"}
                 />
               </div>
             ))}
