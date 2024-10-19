@@ -18,12 +18,12 @@ type Props = {
 
 export default function Header({ itemsCart }: Props) {
   const pathname = usePathname();
-  const { productsQuantity } = useContext(CartContext);
+  const { productsQuantity,toggleCartVisibility } = useContext(CartContext);
   const [cartVisibility,setCartVisibility] = useState<boolean>(false);
 
   return (
     <header className="w-full">
-      <Cart visibility={cartVisibility} />
+      <Cart />
       <Container>
         <div className="w-full h-full px-9 lg:px-0 my-3 flex items-center justify-between border-b-2 border-b-lightGrayishBlue relative">
           <div className="flex items-center justify-center gap-6">
@@ -71,8 +71,7 @@ export default function Header({ itemsCart }: Props) {
             <div className="relative">
               <div className="relative cursor-pointer">
                 <button
-                  onClick={() =>
-                    setCartVisibility((previousValue: boolean) => { return !previousValue; })}
+                  onClick={() => toggleCartVisibility()}
                 >
                   <IoCartOutline className="w-11 h-8" />
                 </button>
@@ -89,6 +88,6 @@ export default function Header({ itemsCart }: Props) {
           </div>
         </div>
       </Container>
-    </header>
+    </header >
   );
 }

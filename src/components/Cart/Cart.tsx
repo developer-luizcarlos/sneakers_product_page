@@ -4,14 +4,10 @@ import { CartContext } from "../Header/CartItem";
 import EmptyCart from "./EmptyCart";
 import ProductCart from "./ProductCart";
 
-type Props = {
-  visibility: boolean;
-};
+export default function Cart() {
+  const { productsQuantity,cartHidden,toggleCartVisibility } = useContext(CartContext);
 
-export default function Cart({ visibility }: Props) {
-  const { productsQuantity } = useContext(CartContext);
-
-  if(!visibility) return null;
+  if(!cartHidden) return null;
 
   return (
     <article
