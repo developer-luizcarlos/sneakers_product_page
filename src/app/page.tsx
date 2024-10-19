@@ -8,6 +8,7 @@ import React,{ useState,useCallback,useContext,useReducer } from "react";
 import { CartContext } from "@/components/Header/CartItem";
 import ModalSlider from "@/components/ModalSlider/ModalSlider";
 import MobileSlider from "@/components/MobileSlider/MobileSlider";
+import Cart from "@/components/Cart/Cart";
 
 type Action = { type: "increment"; } | { type: "decrement"; };
 
@@ -48,7 +49,8 @@ export default function Home() {
   const [state,dispatch] = useReducer(reducer,initialState);
 
   return (
-    <main className="w-full">
+    <main className="w-full relative">
+      <Cart />
       <ModalSlider visibility={showModalSlider} eventHandler={() => setShowModalSlider(false)} />
       <section className="w-full grid grid-cols-1 lg:grid-cols-2 place-items-center gap-0 py-0 lg:py-7">
         <MobileSlider visibility={true} />

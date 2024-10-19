@@ -24,7 +24,7 @@ export const CartContext = createContext<CartContextType>({
 
 export default function CartItem({ children }: Props) {
   const [productsQuantity,setProductsQuantity] = useState<number>(0);
-  const [cartHidden,setCartHidden] = useState<boolean>(true);
+  const [cartHidden,setCartHidden] = useState<boolean>(false);
 
   const changeProductsQuantity = (value: number) => {
     setProductsQuantity(value);

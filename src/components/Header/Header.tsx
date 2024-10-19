@@ -10,7 +10,6 @@ import Container from "../Container/Container";
 import { ThemeContext } from "../ContextComponent/ContextComponent";
 import CartItem from "./CartItem";
 import { CartContext } from "./CartItem";
-import Cart from "../Cart/Cart";
 
 type Props = {
   itemsCart?: number;
@@ -23,7 +22,6 @@ export default function Header({ itemsCart }: Props) {
 
   return (
     <header className="w-full">
-      <Cart />
       <Container>
         <div className="w-full h-full px-9 lg:px-0 my-3 flex items-center justify-between border-b-2 border-b-lightGrayishBlue relative">
           <div className="flex items-center justify-center gap-6">
