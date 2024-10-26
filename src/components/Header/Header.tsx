@@ -81,7 +81,7 @@ export default function Header({ itemsCart }: Props) {
 
             </div>
             <div className="w-14 h-14 rounded-full hover:border-paleOrange border-2 duration-500 cursor-pointer">
-              <img src="/images/image-avatar.png" alt="avatar photo" className="w-full h-full object-cover" />
+              <img src="./images/image-avatar.png" alt="avatar photo" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
