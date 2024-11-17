@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState,createContext,useContext } from "react";
 import Container from "../Container/Container";
-import { ThemeContext } from "../ContextComponent/ContextComponent";
 import CartItem from "./CartItem";
 import { CartContext } from "./CartItem";
 
