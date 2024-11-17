@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Metadata } from "next";
 import "./globals.css";
+import ContextComponent from "@/context/ContextComponent";
 import Container from "@/components/Container/Container";
 import { kumbh } from "../_lib/fonts";
 import Header from "@/components/Header/Header";
@@ -21,12 +22,14 @@ export default function RootLayout({
       <body
         className={` ${ kumbh.className } antialiased`}
       >
-        <CartItem>
-          <Header />
-          <Container>
-            {children}
-          </Container>
-        </CartItem>
+        <ContextComponent>
+          <CartItem>
+            <Header />
+            <Container>
+              {children}
+            </Container>
+          </CartItem>
+        </ContextComponent>
       </body>
     </html>
   );
