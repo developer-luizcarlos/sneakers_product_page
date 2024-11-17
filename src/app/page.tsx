@@ -15,7 +15,7 @@ type State = {
   quantitySelected: number;
 };
 
-let initialState: State = { quantitySelected: 0 };
+const initialState: State = { quantitySelected: 0 };
 
 const reducer = (state: State,action: Action): State => {
   switch(action.type) {
