@@ -5,6 +5,8 @@ import { MouseEventHandler,useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { images } from "@/(gallery)/gallery";
 import { thumbnails } from "@/(thumbnail)/thumbnail";
+import ButtonNextSlider from "@/components/ButtonNextSlider/ButtonNextSlider";
+
 
 type Props = {
   visibility: boolean;
@@ -36,8 +38,11 @@ export default function ModalSlider({ visibility,eventHandler }: Props) {
 
   return (
     <div
-      className={!visibility ? "hidden" : "w-dvw h-dvh absolute top-0 bottom-0 right-0 left-0 bg-slate-950 bg-opacity-65 flex items-center justify-center z-40"}>
+      className={!visibility ? "hidden" : "w-dvw h-dvh absolute top-0 bottom-0 right-0 left-0 bg-zinc-700 bg-opacity-75 flex items-center justify-center z-40"}>
       <div
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
         className="w-[400px] flex items-center flex-col gap-y-4">
         <div className="w-full flex items-center justify-end">
           <button
@@ -48,20 +53,18 @@ export default function ModalSlider({ visibility,eventHandler }: Props) {
         </div>
         <div className="w-full flex items-center justify-center">
           <div className="w-full relative h-[400px]">
-            <div
-              className="absolute top-0 left-0 bottom-0 right-0 h-full w-full flex items-center justify-between">
-              <button
-                onClick={() => decrementImageIndex()}
-                className="w-14 h-14 bg-zinc-200 flex items-center justify-center font-bold text-xl rounded-full relative -left-8 hover:text-paleOrange active:text-paleOrange duration-500">
-                &lt;
-              </button>
-              <button
-                onClick={() => incrementImageIndex()}
-                className="w-14 h-14 bg-zinc-200 flex items-center justify-center font-bold text-xl rounded-full relative -right-8 hover:text-paleOrange active:text-paleOrange duration-500">
-                &gt;
-              </button>
+            <div className="w-full h-full rounded-md overflow-hidden" >
+              <img src={images[imageIndex].src} alt="product photo" />
             </div>
-            <img src={images[imageIndex].src} alt="product photo" className="w-full h-full rounded-md" />
+            <div
+              className="absolute top-0 left-0 h-full w-full flex items-center justify-between">
+              <div className="w-[440px] overflow-clip absolute -left-4">
+                <div className="w-full flex items-center justify-between">
+                  <ButtonNextSlider buttonContent="&lt;" changeImageSlider={() => { decrementImageIndex(); }} />
+                  <ButtonNextSlider buttonContent=" &gt;" changeImageSlider={() => { incrementImageIndex(); }} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="w-full flex items-center justify-center gap-3">

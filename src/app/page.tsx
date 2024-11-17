@@ -1,7 +1,6 @@
-/* eslint-disable prefer-const */
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
+
 import { images } from "../(gallery)/gallery";
 import { thumbnails } from "../(thumbnail)/thumbnail";
 import React,{ useState,useCallback,useContext,useReducer } from "react";
