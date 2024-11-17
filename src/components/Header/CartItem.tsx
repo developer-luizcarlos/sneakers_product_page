@@ -1,5 +1,7 @@
 /*
-  Este código cria um contexto que permite controlar a quantidade de produtos no carrinho e a visibilidade do carrinho, permitindo que outros componentes façam uso desses valores e funções.
+  This code creates a context that allow to handle the quantity of products in the cart and the cart's visibility, enabling that other
+  components make use of these values and function.
+
 */
 "use client";
 import React,{ useState,createContext } from "react";
