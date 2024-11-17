@@ -16,10 +16,10 @@ type CartContextType = {
 };
 
 export const CartContext = createContext<CartContextType>({
-  productsQuantity: 0,
   changeProductsQuantity: () => {},
-  cartHidden: true,
   toggleCartVisibility: () => {},
+  productsQuantity: 0,
+  cartHidden: true,
 });
 
 export default function CartItem({ children }: Props) {

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { useState } from "react";
-import { images } from "@/app/(gallery)/gallery";
+import { images } from "@/(gallery)/gallery";
 
 type Props = {
   visibility: boolean;

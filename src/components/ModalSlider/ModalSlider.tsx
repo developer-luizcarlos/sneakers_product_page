@@ -3,8 +3,8 @@
 "use client";
 import { MouseEventHandler,useState } from "react";
 import { IoClose } from "react-icons/io5";
-import { images } from "@/app/(gallery)/gallery";
-import { thumbnails } from "@/app/(thumbnail)/thumbnail";
+import { images } from "@/(gallery)/gallery";
+import { thumbnails } from "@/(thumbnail)/thumbnail";
 
 type Props = {
   visibility: boolean;
