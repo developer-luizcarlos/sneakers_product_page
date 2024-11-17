@@ -2,6 +2,7 @@
 "use client";
 import { useState } from "react";
 import { images } from "@/(gallery)/gallery";
+import ButtonNextSlider from "../ButtonNextSlider/ButtonNextSlider";
 
 type Props = {
   visibility: boolean;
@@ -32,15 +33,13 @@ export default function MobileSlider({ visibility }: Props) {
 
   if(!visibility) return;
   return (
-    <div className="border-2 w-full md:hidden h-[400px] relative">
-      <img src={images[imageIndex].src} alt="product photo" loading="lazy" className="w-full h-full object-cover" />
-      <div className="absolute mx-auto h-full w-full flex items-center justify-center gap-80 top-0">
-        <button
-          onClick={() => decrementImageSlider()}
-          className="w-12 h-12 bg-lightGrayishBlue rounded-full cursor-pointer text-xl text-black font-semibold flex items-center justify-center hover:text-paleOrange">&lt;</button>
-        <button
-          onClick={() => incrementImageSlider()}
-          className="w-12 h-12 bg-lightGrayishBlue rounded-full cursor-pointer text-xl text-black font-semibold flex items-center justify-center hover:text-paleOrange">&gt;</button>
+    <div className="h-min relative md:hidden">
+      <div className="w-full h-full">
+        <img src={images[imageIndex].src} alt="sneakers image product" />
+      </div>
+      <div className="flex items-center justify-between px-2 w-full h-full absolute top-0">
+        <ButtonNextSlider buttonContent="&lt;" changeImageSlider={() => { decrementImageSlider(); }} />
+        <ButtonNextSlider buttonContent="	&gt;" changeImageSlider={() => { incrementImageSlider(); }} />
       </div>
     </div>
   );
