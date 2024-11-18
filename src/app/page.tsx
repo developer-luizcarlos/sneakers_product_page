@@ -1,14 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+// hooks and contexts importation
 import React,{ useState,useCallback,useContext,useReducer } from "react";
+import { GlobalContext } from "@/context/ContextComponent";
+import { CartContext } from "@/components/Header/CartItem";
+
+// images importation
 import { images } from "../(gallery)/gallery";
 import { thumbnails } from "../(thumbnail)/thumbnail";
-import { CartContext } from "@/components/Header/CartItem";
+
+// Components importation
 import ModalSlider from "@/components/ModalSlider/ModalSlider";
 import MobileSlider from "@/components/MobileSlider/MobileSlider";
 import Cart from "@/components/Cart/Cart";
-import { GlobalContext } from "@/context/ContextComponent";
+import MobileMenu from "@/components/MobileMenu/MobileMenu";
+
 
 type Action = { type: "increment"; } | { type: "decrement"; };
 
@@ -50,6 +57,7 @@ export default function Home() {
 
   return (
     <div>
+      <MobileMenu />
       <ModalSlider />
       <main className="w-full relative">
         <Cart />
