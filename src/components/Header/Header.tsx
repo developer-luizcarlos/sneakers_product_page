@@ -1,14 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
-import { IoCartOutline } from "react-icons/io5";
+import { useState,useContext } from "react";
 import { usePathname } from "next/navigation";
+import { CartContext } from "./CartItem";
+import { GlobalContext } from "@/context/ContextComponent";
+
+// icon importation
+import { IoCartOutline } from "react-icons/io5";
+
+// utilities importation
 import Image from "next/image";
 import Link from "next/link";
-import { useState,createContext,useContext } from "react";
+
+// components importation
 import Container from "../Container/Container";
 import CartItem from "./CartItem";
-import { CartContext } from "./CartItem";
 
 type Props = {
   itemsCart?: number;
@@ -17,6 +24,7 @@ type Props = {
 export default function Header({ itemsCart }: Props) {
   const pathname = usePathname();
   const { productsQuantity,toggleCartVisibility } = useContext(CartContext);
+  const { menuReducer } = useContext(GlobalContext)!;
   const [cartVisibility,setCartVisibility] = useState<boolean>(false);
 
   return (
@@ -30,6 +38,7 @@ export default function Header({ itemsCart }: Props) {
                 src="./images/icon-menu.svg"
                 width={25}
                 height={25}
+                onClick={() => { menuReducer({ type: "OPEN" }); }}
               />
             </button>
             <Link href="/">
