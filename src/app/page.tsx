@@ -1,13 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import React,{ useState,useCallback,useContext,useReducer } from "react";
 import { images } from "../(gallery)/gallery";
 import { thumbnails } from "../(thumbnail)/thumbnail";
-import React,{ useState,useCallback,useContext,useReducer } from "react";
 import { CartContext } from "@/components/Header/CartItem";
 import ModalSlider from "@/components/ModalSlider/ModalSlider";
 import MobileSlider from "@/components/MobileSlider/MobileSlider";
 import Cart from "@/components/Cart/Cart";
+import { GlobalContext } from "@/context/ContextComponent";
 
 type Action = { type: "increment"; } | { type: "decrement"; };
 
@@ -37,19 +38,19 @@ const reducer = (state: State,action: Action): State => {
 
 export default function Home() {
   const [imagesIndex,setImagesIndex] = useState<number>(0);
-  const [showModalSlider,setShowModalSlider] = useState<boolean>(false);
 
   const setImageSlider = useCallback((index: number) => {
     setImagesIndex(index);
   },[]);
 
   const { changeProductsQuantity } = useContext(CartContext);
+  const { modalReducer } = useContext(GlobalContext)!;
 
   const [state,dispatch] = useReducer(reducer,initialState);
 
   return (
     <div>
-      <ModalSlider visibility={showModalSlider} eventHandler={() => setShowModalSlider(false)} />
+      <ModalSlider />
       <main className="w-full relative">
         <Cart />
         <section className="w-full grid grid-cols-1 lg:grid-cols-2 place-items-center gap-0 py-0 lg:py-7">
@@ -58,7 +59,7 @@ export default function Home() {
             <img
               src={images[imagesIndex].src}
               alt="product photo"
-              onClick={() => { setShowModalSlider(true); }}
+              onClick={() => { modalReducer({ type: "SHOW" }); }}
               className="w-full h-[420px] object-cover rounded-lg"
             />
             <div className="w-full flex items-center justify-between gap-4">

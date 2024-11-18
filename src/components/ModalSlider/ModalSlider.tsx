@@ -1,19 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { MouseEventHandler,useState } from "react";
+import { MouseEventHandler,useState,useContext } from "react";
 import { IoClose } from "react-icons/io5";
 import { images } from "@/(gallery)/gallery";
 import { thumbnails } from "@/(thumbnail)/thumbnail";
 import ButtonNextSlider from "@/components/ButtonNextSlider/ButtonNextSlider";
+import { GlobalContext } from "@/context/ContextComponent";
 
 
-type Props = {
-  visibility: boolean;
-  eventHandler: MouseEventHandler;
-};
+export default function ModalSlider() {
+  const { modalReducer,modalState } = useContext(GlobalContext)!;
 
-export default function ModalSlider({ visibility,eventHandler }: Props) {
   const [imageIndex,setImageIndex] = useState<number>(0);
 
   const incrementImageIndex = () => {
@@ -38,7 +36,8 @@ export default function ModalSlider({ visibility,eventHandler }: Props) {
 
   return (
     <div
-      className={!visibility ? "hidden" : "w-dvw h-dvh absolute top-0 bottom-0 right-0 left-0 bg-zinc-700 bg-opacity-75 flex items-center justify-center z-40"}>
+      onClick={() => { modalReducer({ type: "HIDDEN" }); }}
+      className={!modalState.isVisible ? "hidden" : "w-dvw h-dvh absolute top-0 bottom-0 right-0 left-0 bg-zinc-700 bg-opacity-75 flex items-center justify-center z-40"}>
       <div
         onClick={(e) => {
           e.stopPropagation();
@@ -46,7 +45,7 @@ export default function ModalSlider({ visibility,eventHandler }: Props) {
         className="w-[400px] flex items-center flex-col gap-y-4">
         <div className="w-full flex items-center justify-end">
           <button
-            onClick={eventHandler}
+            onClick={() => { modalReducer({ type: "HIDDEN" }); }}
             className="cursor-pointer">
             <IoClose className="w-12 h-7 hover:text-paleOrange duration-500" />
           </button>
